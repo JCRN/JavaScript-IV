@@ -30,6 +30,12 @@ class Instructor extends Person {
     grade(student, subject) {
         return console.log(`${student.name} receives a perfect score on ${subject}`)
     }
+
+    points(student) {
+       let plusOrMinus = Math.random() < 0.5 ? -1 : 1
+       student.grade += plusOrMinus;
+       return console.log('new grade:', student.grade)
+    }
 }
 
 // Student class - inherits from Person class ***
@@ -38,7 +44,8 @@ class Student extends Person {
         super(attributes)
         this.previousBackground = attributes.previousBackground
         this.className = attributes.className
-        this.favSubjects = attributes.favSubjects        
+        this.favSubjects = attributes.favSubjects
+        this.grade = attributes.grade        
     }
 
     listsSubjects() {
@@ -51,6 +58,10 @@ class Student extends Person {
 
     sprintChallenge(subject) {
         return console.log(`${this.name} has begun sprint challenge on ${subject}`)
+    }
+
+    graduate() {
+        return (this.grade > 70) ? console.log(`Congratulations ${this.name}! You've graduated!`) : console.log(`keep working on your assignments ${this.name}, you're almost there!`)
     }
 
 }
@@ -88,6 +99,7 @@ const isaiah = new Student({
     previousBackground: 'High School last month',
     className: 'Web21',
     favSubjects: ['Html', 'CSS', 'JavaScript'],
+    grade: 85
 });
 
 const kevin = new Student({
@@ -97,6 +109,7 @@ const kevin = new Student({
     previousBackground: "Table Games Dealer",
     className: "WEB21",
     favSubjects: ['Html', 'CSS', 'JavaScript'],
+    grade: 96
 });
     
 const nisa = new Student({
@@ -106,6 +119,7 @@ const nisa = new Student({
     previousBackground: 'Debt Collector',
     className: 'Web21',
     favSubjects: ['Html', 'CSS', 'JavaScript'],
+    grade: 78
 });
 
 const joscelyn = new Student({
@@ -115,6 +129,7 @@ const joscelyn = new Student({
     previousBackground: "English teacher",
     className: 'Web21',
     favSubjects: ["Computer Science", "Philosophy", "English"],
+    grade: 65
 });
 
 const marguel = new ProjectManager({
@@ -219,7 +234,12 @@ christian.standUp('Web5000')
 // test debugsCode() method
 austin.debugsCode(nisa, 'JavaScript')
 
+// test points() method
+console.log('previous grade:', isaiah.grade)
+mary.points(isaiah)
 
-
+// test graduate() method
+nisa.graduate() // 78
+joscelyn.graduate() // 63
 
 
