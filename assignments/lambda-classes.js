@@ -10,7 +10,7 @@ class Person {
     }
 
     speak() {
-        console.log(`Hello my name is ${this.name}, I am from ${this.location}`)
+        return console.log(`Hello my name is ${this.name}, I am from ${this.location}`)
     }
 }
 
@@ -24,11 +24,11 @@ class Instructor extends Person {
     }
 
     demo(subject) {
-        console.log(`Today we are learning about ${subject}`)
+        return console.log(`Today we are learning about ${subject}`)
     }
 
     grade(student, subject) {
-        console.log(`${student.name} receives a perfect score on ${subject}`)
+        return console.log(`${student.name} receives a perfect score on ${subject}`)
     }
 }
 
@@ -42,20 +42,20 @@ class Student extends Person {
     }
 
     listsSubjects() {
-        this.favSubjects.forEach((subject) => console.log(subject))
+        return this.favSubjects.forEach((subject) => console.log(subject))
     }
 
     PRAssignment(subject) {
-        console.log(`${this.name} has submitted a PR for ${subject}`)
+        return console.log(`${this.name} has submitted a PR for ${subject}`)
     }
 
     sprintChallenge(subject) {
-        console.log(`${this.name} has begun sprint challenge on ${subject}`)
+        return console.log(`${this.name} has begun sprint challenge on ${subject}`)
     }
 
 }
 
-class PM extends Instructors {
+class ProjectManager extends Instructor {
     constructor(attributes) {
         super(attributes)
         this.gradClassName = attributes.gradClassName
@@ -63,11 +63,11 @@ class PM extends Instructors {
     }
 
     standUp(channel) {
-        console.log(`${this.name} announces to ${channel}, @channel standby times!`)
+        return console.log(`${this.name} announces to ${channel}, @channel standby times!`)
     }
 
     debugsCode(student, subject) {
-        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
+        return console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
     }
 }
 
@@ -193,3 +193,31 @@ const austin = new ProjectManager({
     favLanguage: 'Java',
     catchPhrase: ":eggplant:",
 });
+
+
+// test speak() method
+pat.speak()
+
+// test demo() method
+dan.demo('feline hijinx')
+
+// test grade() method
+dan.grade(joscelyn, 'LESS')
+
+// test listsSubjects() method
+nisa.listsSubjects()
+
+// test PRAssignment() method
+kevin.PRAssignment('JavaScript')
+
+// test sprintChallenge() method
+joscelyn.sprintChallenge('CSS')
+
+// test standUp() method
+christian.standUp('Web5000')
+
+// test debugsCode() method
+austin.debugsCode(nisa, 'JavaScript')
+
+
+
